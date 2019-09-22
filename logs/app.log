@@ -1,0 +1,8 @@
+2019-09-22 17:38:06,697 INFO c.b.a.BestpriceWebApiApplication [restartedMain] Starting BestpriceWebApiApplication on MBP-de-Marcio.lan with PID 3841 (/Users/marciojusto/Documents/Desenvolvimento/workspace-sts/bestprice-web-api/target/classes started by marciojusto in /Users/marciojusto/Documents/Desenvolvimento/workspace-sts/bestprice-web-api)
+2019-09-22 17:38:06,703 DEBUG c.b.a.BestpriceWebApiApplication [restartedMain] Running with Spring Boot v2.1.8.RELEASE, Spring v5.1.9.RELEASE
+2019-09-22 17:38:06,704 INFO c.b.a.BestpriceWebApiApplication [restartedMain] No active profile set, falling back to default profiles: default
+2019-09-22 17:38:10,405 INFO c.b.a.BestpriceWebApiApplication [restartedMain] Started BestpriceWebApiApplication in 4.194 seconds (JVM running for 7.477)
+2019-09-22 17:38:56,349 INFO c.b.a.BestpriceWebApiApplication [restartedMain] Starting BestpriceWebApiApplication on MBP-de-Marcio.lan with PID 3844 (/Users/marciojusto/Documents/Desenvolvimento/workspace-sts/bestprice-web-api/target/classes started by marciojusto in /Users/marciojusto/Documents/Desenvolvimento/workspace-sts/bestprice-web-api)
+2019-09-22 17:38:56,386 DEBUG c.b.a.BestpriceWebApiApplication [restartedMain] Running with Spring Boot v2.1.8.RELEASE, Spring v5.1.9.RELEASE
+2019-09-22 17:38:56,560 INFO c.b.a.BestpriceWebApiApplication [restartedMain] No active profile set, falling back to default profiles: default
+2019-09-22 17:38:59,128 INFO c.b.a.BestpriceWebApiApplication [restartedMain] Started BestpriceWebApiApplication in 3.345 seconds (JVM running for 5.771)
