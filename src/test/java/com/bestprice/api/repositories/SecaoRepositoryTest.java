@@ -28,4 +28,5 @@ public class SecaoRepositoryTest {
 		List<Secao> findAll = (List<Secao>) repository.findAll();
 		Assertions.assertThat(findAll).isNotEmpty();
 	}
+	
 }
