@@ -23,19 +23,17 @@ public class Mercado implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ID_MERCADO")
 	private Long id;
-	
+
 	@NotBlank
 	private String nome;
-	
+
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinTable(
-				name = "MERCADO_SECAO",
-				joinColumns = @JoinColumn(referencedColumnName = "ID_MERCADO"),
-				inverseJoinColumns = @JoinColumn(referencedColumnName = "ID_SECAO"))
+	@JoinTable(name = "MERCADO_SECAO", joinColumns = @JoinColumn(referencedColumnName = "ID_MERCADO"), inverseJoinColumns = @JoinColumn(referencedColumnName = "ID_SECAO"))
 	private Collection<Secao> secoes;
 
-	public Mercado() {}
-	
+	public Mercado() {
+	}
+
 	public Mercado(@NotBlank String nome, Collection<Secao> secoes) {
 		this.nome = nome;
 		this.secoes = secoes;
@@ -64,5 +62,30 @@ public class Mercado implements Serializable {
 	public void setSecoes(Collection<Secao> secoes) {
 		this.secoes = secoes;
 	}
-	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Mercado other = (Mercado) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
+	}
+
 }

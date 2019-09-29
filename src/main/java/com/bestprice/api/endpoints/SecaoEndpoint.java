@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,21 +27,19 @@ public class SecaoEndpoint {
 		return new ResponseEntity<>(repository.findAll(), HttpStatus.OK);
 	}
 	
-//	@GetMapping(path = "/{id}")
-//	public ReponseEntity<?> getSecaoById(@PathVariable("id") Long id) {
-//		Secao secao = repository.findById(id).get();
-//		return new ResponseEntity<>(secao, HttpStatus.OK);
-//	}
+	@GetMapping(path = "/{id}")
+	public ResponseEntity<?> getSecaoById(@PathVariable("id") Long id) {
+		return new ResponseEntity<>(repository.findById(id).get(), HttpStatus.OK);
+	}
 	
 	@PostMapping
 	public ResponseEntity<?> save(@RequestBody Secao secao) {
-		Secao secaoSalva = repository.save(secao);
-		return new ResponseEntity<>(secaoSalva, HttpStatus.OK);
+		return new ResponseEntity<>(repository.save(secao), HttpStatus.OK);
 	}
 	
-	@DeleteMapping
-	public ResponseEntity<?> delete(@RequestBody Secao secao) {
-		repository.delete(secao);
+	@DeleteMapping("/{id}")
+	public ResponseEntity<?> delete(@PathVariable Long id) {
+		repository.deleteById(id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
