@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Secao implements Serializable {
@@ -20,6 +21,7 @@ public class Secao implements Serializable {
 	private Long id;
 
 	@NotBlank
+	@Size(min = 4, max = 40)
 	private String nome;
 
 	public Long getId() {

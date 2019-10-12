@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Mercado implements Serializable {
@@ -25,6 +26,7 @@ public class Mercado implements Serializable {
 	private Long id;
 
 	@NotBlank
+	@Size(min = 4, max = 30)
 	private String nome;
 
 	@OneToMany(cascade = CascadeType.ALL)

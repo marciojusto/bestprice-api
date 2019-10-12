@@ -1,5 +1,7 @@
 package com.bestprice.api.endpoints;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,13 +36,13 @@ public class SecaoEndpoint {
 		return new ResponseEntity<>(repository.findById(id).get(), HttpStatus.OK);
 	}
 	
-	@GetMapping(path = "/findByNome/{name}")
+	@GetMapping(path = "/findByNome/{nome}")
 	public ResponseEntity<?> findByNome(@PathVariable("nome") String nome) {
 		return new ResponseEntity<>(repository.findByNome(nome), HttpStatus.OK);
 	}
 	
 	@PostMapping
-	public ResponseEntity<?> save(@RequestBody Secao secao) {
+	public ResponseEntity<?> save(@Valid @RequestBody Secao secao) {
 		return new ResponseEntity<>(repository.save(secao), HttpStatus.CREATED);
 	}
 	
@@ -52,7 +54,7 @@ public class SecaoEndpoint {
 	}
 	
 	@PutMapping
-	public ResponseEntity<?> update(@RequestBody Secao secao) {
+	public ResponseEntity<?> update(@Valid @RequestBody Secao secao) {
 		verifyIsSecaoExists(secao.getId());
 		repository.save(secao);
 		return new ResponseEntity<>(HttpStatus.OK);
