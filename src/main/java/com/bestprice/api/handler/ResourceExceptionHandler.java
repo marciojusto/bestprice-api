@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,6 +37,18 @@ public class ResourceExceptionHandler extends ResponseEntityExceptionHandler {
 			.Titulo("Resource not fund!")
 			.Detalhe(rnfException.getMessage())
 			.DeveloperMessage(rnfException.getClass().getName()).build();
+		return new ResponseEntity<>(detail, HttpStatus.NOT_FOUND);
+	}
+	
+	@ExceptionHandler(EmptyResultDataAccessException.class)
+	public ResponseEntity<?> handleEmptyResultDataAccessException(EmptyResultDataAccessException erdaException) {
+		ResourceNotFoundDetail detail = ResourceNotFoundDetail
+			.builder()
+			.Timestamp(Instant.now().getEpochSecond())
+			.Status(HttpStatus.NOT_FOUND.value())
+			.Titulo(messageSource.getMessage("recurso.nao-encontrado", null, LocaleContextHolder.getLocale()))
+			.Detalhe(erdaException.getMessage())
+			.DeveloperMessage(erdaException.getClass().getName()).build();
 		return new ResponseEntity<>(detail, HttpStatus.NOT_FOUND);
 	}
 	

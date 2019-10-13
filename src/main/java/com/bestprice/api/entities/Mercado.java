@@ -11,7 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -21,7 +21,7 @@ public class Mercado implements Serializable {
 	private static final long serialVersionUID = -4946821622586116516L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID_MERCADO")
 	private Long id;
 
@@ -29,8 +29,12 @@ public class Mercado implements Serializable {
 	@Size(min = 4, max = 30)
 	private String nome;
 
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "MERCADO_SECAO", joinColumns = @JoinColumn(referencedColumnName = "ID_MERCADO"), inverseJoinColumns = @JoinColumn(referencedColumnName = "ID_SECAO"))
+	@ManyToMany(cascade = CascadeType.MERGE)
+	@JoinTable(
+				name = "MERCADO_SECAO", 
+				joinColumns = @JoinColumn(name = "ID_MERCADO", referencedColumnName = "ID_MERCADO"), 
+				inverseJoinColumns = @JoinColumn(name = "ID_SECAO", referencedColumnName = "ID_SECAO")
+			  )
 	private Collection<Secao> secoes;
 
 	public Mercado() {
