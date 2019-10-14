@@ -1,5 +1,7 @@
 package com.bestprice.api.repositories;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.util.List;
 
 import org.assertj.core.api.Assertions;
@@ -29,4 +31,29 @@ public class SecaoRepositoryTest {
 		Assertions.assertThat(findAll).isNotEmpty();
 	}
 	
+	@Test
+	public void createShouldPersistData() {
+		Secao secao = new Secao("Congelados");
+		repository.save(secao);
+		assertThat(secao.getId()).isNotNull();
+		assertThat(secao.getNome()).isEqualTo("Congelados");
+	}
+	
+	@Test
+	public void deleteShouldRemoveData() {
+		Secao secao = new Secao("Congelados");
+		repository.save(secao);
+		repository.delete(secao);
+		assertThat(repository.findByNome(secao.getNome())).isEmpty();
+	}
+	
+	@Test
+	public void updateShouldChangeAndPersistData() {
+		Secao secao = new Secao("Congelados");
+		repository.save(secao);
+		secao.setNome("Mercearia");
+		repository.save(secao);
+		assertThat(secao.getId()).isNotNull();
+		assertThat(secao.getNome()).isEqualTo("Mercearia");
+	}
 }

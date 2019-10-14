@@ -1,14 +1,12 @@
 package com.bestprice.api.entities;
 
 import java.io.Serializable;
-import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -25,9 +23,13 @@ public class Secao implements Serializable {
 	@NotBlank
 	@Size(min = 4, max = 40)
 	private String nome;
+
+	public Secao() {
+	}
 	
-	@ManyToMany(mappedBy = "secoes")
-	private Collection<Mercado> mercados;
+	public Secao(@NotBlank @Size(min = 4, max = 40) String nome) {
+		this.nome = nome;
+	}
 
 	public Long getId() {
 		return id;

@@ -10,14 +10,14 @@ create table preco (
 	PRIMARY KEY (id_preco, id_produto, id_mercado)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-ALTER TABLE produto
-	ADD COLUMN id_preco BIGINT(20);
+-- ALTER TABLE produto
+--	ADD COLUMN id_preco BIGINT(20);
 	
-ALTER TABLE mercado
-	ADD id_preco BIGINT(20);
+-- ALTER TABLE mercado
+--	ADD id_preco BIGINT(20);
 
-ALTER TABLE produto
-	ADD CONSTRAINT fk_preco_produto FOREIGN KEY (id_preco) REFERENCES preco (id_preco) ON DELETE CASCADE;
+-- ALTER TABLE produto
+--	ADD CONSTRAINT fk_preco_produto FOREIGN KEY (id_preco) REFERENCES preco (id_preco) ON DELETE CASCADE;
 	
-ALTER TABLE mercado
-	ADD CONSTRAINT fk_preco_mercado FOREIGN KEY (id_preco) REFERENCES preco (id_preco) ON DELETE CASCADE;
+-- ALTER TABLE mercado
+--	ADD CONSTRAINT fk_preco_mercado FOREIGN KEY (id_preco) REFERENCES preco (id_preco) ON DELETE CASCADE;
